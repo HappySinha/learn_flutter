@@ -1,59 +1,1 @@
-import 'package:flutter/material.dart';
-
-void main() => runApp(App());
-
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  @override
-  int num = 0;
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Happy Sinha'),
-//        backgroundColor: Colors.pink,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('How many time you Pressed Floating Action Button'),
-            SizedBox(height: 20),
-            RawMaterialButton(
-                child: Text('$num',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 28)),
-                fillColor: Colors.blue,
-                constraints:
-                    BoxConstraints.tightFor(height: 50.0, width: 100.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)))
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            num++;
-          });
-        },
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}
+import 'package:flutter/material.dart';import 'dice.dart';import 'home.dart';void main() =>    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: AppBody()));int numCon = 0;class AppBody extends StatefulWidget {  @override  _AppBodyState createState() => _AppBodyState();}class _AppBodyState extends State<AppBody> {  @override  Widget build(BuildContext context) {    return Scaffold(      backgroundColor: Colors.blueGrey,      appBar: AppBar(//          actions: [Padding(//                padding: const EdgeInsets.only(right: 18),//                child: IconButton(//                    icon: Icon(//                      Icons.exit_to_app,//                      color: Colors.white,//                    ),//                    onPressed: () {//                      Navigator.push(//                          context,//                          MaterialPageRoute(//                              builder: (context) => SecondScreen()));//                    }))],          title: Text('I am Counter',              style: TextStyle(fontWeight: FontWeight.bold)),          backgroundColor: Colors.blueGrey[800]),//      drawer: Drawer(//        child: ListTile(//          title: Text("My Profile"),//        ),//      ),      drawer: Drawer(        child: ListView(          padding: EdgeInsets.zero,          children: [            UserAccountsDrawerHeader(              decoration: BoxDecoration(color: Colors.blueGrey),              accountName: Text(                "Happy Sinha",                style:                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),              ),              accountEmail: Text(                "happyk8651@gmail.com",                style: TextStyle(                    color: Colors.teal[100], fontWeight: FontWeight.bold),              ),              currentAccountPicture: CircleAvatar(                backgroundImage: AssetImage("images/happySin.png"),              ),            ),            ListTile(              onTap: () {                Navigator.push(context,                    MaterialPageRoute(builder: (context) => SecondScreen()));              },              leading: Icon(Icons.person),              title: Text("Account"),              subtitle: Text("About Your Profile"),            ),            ListTile(              onTap: () {                Navigator.push(context,                    MaterialPageRoute(builder: (context) => DiceGame()));              },              leading: Icon(Icons.apps),              title: Text("Dice"),              subtitle: Text("Play now Dice game"),//                trailing: Icon(Icons.send),            ),          ],        ),      ),      body: Center(          child: Column(              mainAxisAlignment: MainAxisAlignment.start,              crossAxisAlignment: CrossAxisAlignment.center,              children: [            Opacity(opacity: 0.9, child: Image.asset('images/diamond.png')),            Text('How many time you press Add Button $numCon',                style: TextStyle(color: Colors.white, fontSize: 24))          ])),      floatingActionButton: FloatingActionButton(        backgroundColor: Colors.blueGrey[800],        child: Icon(Icons.add),        onPressed: () {          setState(() {            numCon++;          });        },      ),    );  }}
