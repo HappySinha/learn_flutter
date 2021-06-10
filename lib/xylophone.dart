@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,7 @@ class Xylophone extends StatelessWidget {
     buildKey(sunNum, colors) {
       return FlatButton(
         onPressed: () {
-          AudioCache().play('note$sunNum.wav');
+          // AudioCache().play('note$sunNum.wav');
         },
         padding: paddingAll,
         child: Container(

@@ -122,7 +122,7 @@ class SecondScreen extends StatelessWidget {
                     ),
                     SizedBox(width: 30),
                     Text(
-                      'happyk8651@ggmail.com',
+                      'happyk8651@gmail.com',
                       style: TextStyle(
                           color: Colors.blueGrey,
                           fontWeight: FontWeight.bold,
@@ -130,7 +130,8 @@ class SecondScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: 30)
             ],
           ),
         ],
