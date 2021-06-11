@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Question {
   String questionText;
@@ -71,7 +72,7 @@ class QuizBrain {
     }
   }
 
-  void checkAnswer(bool userAnswer) {
+  void checkAnswer(bool userAnswer, context) {
     bool correctAnswer = quizBrain.questionBool();
     quizBrain.nextQuestion();
     if (_questionNumber < _questionBank.length - 1) {
@@ -87,6 +88,46 @@ class QuizBrain {
         ));
       }
     }
+    if (_questionNumber == _questionBank.length - 1) {
+      isFinished(context);
+    }
+  }
+
+  void reset() {
+    _questionNumber = 0;
+    scoreKeeper.clear();
+  }
+
+  void isFinished(context) {
+    Alert(
+      context: context,
+      style: AlertStyle(
+        backgroundColor: Colors.white24,
+        titleStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'dancing'),
+        descStyle: TextStyle(color: Colors.white54, fontFamily: 'SansPro'),
+      ),
+      type: AlertType.success,
+      title: "Congratulations 😊",
+      desc: "You have to completed all Question.",
+      buttons: [
+        DialogButton(
+          color: Colors.black45,
+          child: Text(
+            "Restart",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () {
+            reset();
+            Navigator.pop(context);
+          },
+          width: 120,
+        )
+      ],
+    ).show();
   }
 }
 
@@ -136,7 +177,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: InkWell(
                     onTap: () {
                       setState(() {
-                        quizBrain.checkAnswer(true);
+                        quizBrain.checkAnswer(true, context);
                       });
                     },
                     child: Container(
@@ -155,7 +196,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: InkWell(
                     onTap: () {
                       setState(() {
-                        quizBrain.checkAnswer(false);
+                        quizBrain.checkAnswer(false, context);
                       });
                     },
                     child: Container(
