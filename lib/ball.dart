@@ -21,6 +21,7 @@ class _BallPageState extends State<BallPage> {
       body: Container(
         color: Colors.blue[200],
         child: Center(
+          // ignore: deprecated_member_use
           child: FlatButton(
             onPressed: () {
               setState(() {

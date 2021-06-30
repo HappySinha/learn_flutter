@@ -39,6 +39,7 @@ class _PlayDiceState extends State<PlayDice> {
       child: Row(
         children: [
           Expanded(
+            // ignore: deprecated_member_use
             child: FlatButton(
               onPressed: () {
                 renNum();
@@ -47,6 +48,7 @@ class _PlayDiceState extends State<PlayDice> {
             ),
           ),
           Expanded(
+            // ignore: deprecated_member_use
             child: FlatButton(
               onPressed: () {
                 renNum();

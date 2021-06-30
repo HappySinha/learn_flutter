@@ -14,6 +14,7 @@ class Xylophone extends StatelessWidget {
     // }
 
     buildKey(sunNum, colors) {
+      // ignore: deprecated_member_use
       return FlatButton(
         onPressed: () {
           // AudioCache().play('note$sunNum.wav');
