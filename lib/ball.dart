@@ -21,8 +21,7 @@ class _BallPageState extends State<BallPage> {
       body: Container(
         color: Colors.blue[200],
         child: Center(
-          // ignore: deprecated_member_use
-          child: FlatButton(
+          child: TextButton(
             onPressed: () {
               setState(() {
                 ballNumber = Random().nextInt(5) + 1;
