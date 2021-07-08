@@ -1,50 +1,16 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 const apiKey = 'fede742245c927d36d7585a7966be2da';
-
-class Location {
-  double latitude;
-  double longitude;
-
-  Future<void> getCurrentLocation() async {
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.low);
-      latitude = position.latitude;
-      longitude = position.longitude;
-    } catch (e) {
-      print(e);
-    }
-  }
-}
-
-class NetworkHelper {
-  final String url;
-  NetworkHelper(this.url);
-
-  Future getData() async {
-    http.Response response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      String data = response.body;
-      print('This is JsonDecoded Data ${jsonDecode(data)}');
-      return jsonDecode(data);
-    } else {
-      print(response.statusCode);
-    }
-  }
-}
+const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
-  var openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
-
   Future<dynamic> getCityWeather(String cityName) async {
     NetworkHelper networkHelper =
         NetworkHelper('$openWeatherURL?q=$cityName&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
-    print('This is Weather Model Data $weatherData');
+    print('This is Weather City Model Data $weatherData');
     return weatherData;
   }
 
@@ -54,6 +20,7 @@ class WeatherModel {
     NetworkHelper networkHelper = NetworkHelper(
         '$openWeatherURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
+    print('This is Weather Location Model Data $weatherData');
     return weatherData;
   }
 
@@ -86,6 +53,38 @@ class WeatherModel {
       return 'You\'ll need 🧥 and 👖';
     } else {
       return 'Bring a 👕 just in case';
+    }
+  }
+}
+
+class NetworkHelper {
+  NetworkHelper(this.url);
+  final String url;
+
+  Future getData() async {
+    http.Response response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      String data = response.body;
+      return jsonDecode(data);
+    } else {
+      print(response.statusCode);
+    }
+  }
+}
+
+class Location {
+  double latitude;
+  double longitude;
+
+  Future<void> getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.low);
+      latitude = position.latitude;
+      longitude = position.longitude;
+    } catch (e) {
+      print(e);
     }
   }
 }

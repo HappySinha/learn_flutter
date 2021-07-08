@@ -3,8 +3,8 @@ import 'weatherCity.dart';
 import 'function.dart';
 
 class WeatherScreen extends StatefulWidget {
-  final weatherData;
   WeatherScreen(this.weatherData);
+  final weatherData;
 
   @override
   _WeatherScreenState createState() => _WeatherScreenState();
