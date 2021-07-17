@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/clima/services/weather.dart';
+import 'package:learn_flutter/clima/screens/weather.dart';
 import 'location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -30,10 +30,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitDoubleBounce(
-          color: Colors.white,
-          size: 100.0,
+      backgroundColor: Colors.grey[900],
+      body: SafeArea(
+        child: Center(
+          child: SpinKitDoubleBounce(
+            color: Colors.grey[100],
+            size: MediaQuery.of(context).size.width / 2,
+          ),
         ),
       ),
     );

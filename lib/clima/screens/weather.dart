@@ -26,21 +26,21 @@ class WeatherModel {
 
   String getWeatherIcon(int condition) {
     if (condition < 300) {
-      return '🌩';
+      return 'images/Cloud.png';
     } else if (condition < 400) {
-      return '🌧';
+      return 'images/CloudRain.png';
     } else if (condition < 600) {
-      return '☔️';
+      return 'images/Umbrella.png';
     } else if (condition < 700) {
-      return '☃️';
+      return 'images/Cool.png';
     } else if (condition < 800) {
-      return '🌫';
+      return 'images/ClearSky.png';
     } else if (condition == 800) {
-      return '☀️';
+      return 'images/Sun.png';
     } else if (condition <= 804) {
-      return '☁️';
+      return 'images/Cloud.png';
     } else {
-      return '🤷‍';
+      return 'images/Woman.png';
     }
   }
 
