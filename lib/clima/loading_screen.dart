@@ -1,19 +1,16 @@
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
-import 'weatherScreen.dart';
-import 'function.dart';
+import 'package:learn_flutter/clima/weather.dart';
+import 'location_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class LoadingWeather extends StatefulWidget {
+class LoadingScreen extends StatefulWidget {
   @override
-//   State<StatefulWidget> createState() {
-//     return _LoadingWeatherState();
-//   }
-// }
-
-  _LoadingWeatherState createState() => _LoadingWeatherState();
+  State<StatefulWidget> createState() {
+    return _LoadingScreenState();
+  }
 }
 
-class _LoadingWeatherState extends State<LoadingWeather> {
+class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
@@ -22,8 +19,12 @@ class _LoadingWeatherState extends State<LoadingWeather> {
 
   void getLocationData() async {
     var weatherData = await WeatherModel().getLocationWeather();
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => WeatherScreen(weatherData)));
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return LocationScreen(
+        locationWeather: weatherData,
+      );
+    }));
   }
 
   @override
@@ -41,5 +42,3 @@ class _LoadingWeatherState extends State<LoadingWeather> {
     );
   }
 }
-
-// 'https://i.pinimg.com/564x/62/33/8f/62338f2bb6a11ba88530416edbb3ab21.jpg',

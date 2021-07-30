@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/clima/screens/constants.dart';
+import 'package:learn_flutter/clima/constants.dart';
 
 class CityScreen extends StatefulWidget {
   @override
@@ -13,26 +13,6 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//       bottomNavigationBar: CurvedNavigationBar(
-//         height: 46.0,
-//         color: Color(0xDF1964D4),
-//         buttonBackgroundColor: Color(0xDF1964D4),
-//         backgroundColor: Color(0xFF33CCDA),
-//         // backgroundColor: Color(0xDF1964D4),
-// // animationCurve: Curves.easeInOut,
-// // animationDuration: Duration(milliseconds: 600),
-//         index: 1,
-//         onTap: (index) {
-//           if (index == 0) {
-//             return Navigator.pop(context);
-//           }
-//           setState(() {});
-//         },
-//         items: [
-//           Icon(Icons.near_me, color: Colors.white),
-//           Icon(Icons.location_city, color: Colors.white),
-//         ],
-//       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
